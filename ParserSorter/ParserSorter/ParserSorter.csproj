@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,8 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factory\CommaDelimitedFile.cs" />
+    <Compile Include="Factory\ConcreteFileFactory.cs" />
+    <Compile Include="Factory\FileFactory.cs" />
+    <Compile Include="Factory\IFileFactory.cs" />
+    <Compile Include="Factory\PipeDelimitedFile.cs" />
+    <Compile Include="Factory\SpaceDelimitedFile.cs" />
+    <Compile Include="FileUploader.cs" />
+    <Compile Include="Globals.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sorter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
