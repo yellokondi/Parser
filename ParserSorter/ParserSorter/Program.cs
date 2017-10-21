@@ -14,7 +14,7 @@ namespace ParserSorter
             Factory.FileFactory fileFactory = new Factory.ConcreteFileFactory();
 
             //TODO: Create an IdentifyFileType(String fileLocation) method to recognize which concrete object needs to be used
-
+            
             Factory.IFileFactory pipeDelimitedFile = fileFactory.GetFile("pipe", ConfigurationManager.AppSettings["DefaultFileLocation"].ToString());
             List <Person> personLines = pipeDelimitedFile.Parse();
 

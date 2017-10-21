@@ -8,7 +8,7 @@ namespace ParserSorter
 {
     public class Sorter
     {
-        public List<T> QuickSort<T>(List<T> elements) where T : IComparable
+        private List<T> QuickSort<T>(List<T> elements) where T : IComparable
         {
             if (elements.Count() < 2) return elements;
             Int32 pivot = new Random().Next(elements.Count());
@@ -33,8 +33,21 @@ namespace ParserSorter
             List<T> merged = QuickSort(left);
             merged.Add(val);
             merged.AddRange(QuickSort(right));
-
+           
             return merged;
         }
-    }
+
+        public List<T> QuickSort<T>(List<T> elements, Globals.SortDirection sortDirection) where T : IComparable
+        {
+            if (sortDirection == Globals.SortDirection.Ascending)
+            {
+                return QuickSort(elements);
+            }
+            else
+            {
+                List<T> retVal = QuickSort(elements);
+                return retVal.Reverse<T>().ToList();
+            }
+        }
+    }    
 }
