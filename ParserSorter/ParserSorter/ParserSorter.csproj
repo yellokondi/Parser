@@ -49,7 +49,6 @@
     <Compile Include="Factory\IFileFactory.cs" />
     <Compile Include="Factory\PipeDelimitedFile.cs" />
     <Compile Include="Factory\SpaceDelimitedFile.cs" />
-    <Compile Include="FileUploader.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
