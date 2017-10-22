@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.IO;
 
 namespace ParserSorter
 {
@@ -11,13 +12,24 @@ namespace ParserSorter
     {
         static void Main(string[] args)
         {
-            Factory.FileFactory fileFactory = new Factory.ConcreteFileFactory();
+            try
+            {
+                Factory.FileFactory fileFactory = new Factory.ConcreteFileFactory();
+                String fileLocation = ConfigurationManager.AppSettings["DefaultFileLocation"].ToString();
 
-            //TODO: Create an IdentifyFileType(String fileLocation) method to recognize which concrete object needs to be used
-            
-            Factory.IFileFactory pipeDelimitedFile = fileFactory.GetFile("pipe", ConfigurationManager.AppSettings["DefaultFileLocation"].ToString());
-            List <Person> personLines = pipeDelimitedFile.Parse();
+                List<Person> peopleRecords = new List<Person>();
+                String[] files = Directory.GetFiles(fileLocation, "*.txt");
+                foreach(String file in files)
+                {
+                    Factory.IFileFactory delimitedFile = fileFactory.GetFile(file);
+                    peopleRecords.AddRange(delimitedFile.Parse());
+                }
 
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
     }
 }

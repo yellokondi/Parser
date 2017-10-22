@@ -9,6 +9,7 @@ namespace ParserSorter
 {
     public class Globals
     {
+        #region Enums
         public enum Gender
         {
             Female,
@@ -21,6 +22,7 @@ namespace ParserSorter
             Ascending,
             Descending
         }
+        #endregion
 
         public List<Person> ParseBy(Char delimiter, String fileLocation)
         {
@@ -42,13 +44,14 @@ namespace ParserSorter
                 }
 
                 DateTime dateResult;
-                DateTime.TryParse(items[3], out dateResult);
+                DateTime.TryParse(items[4], out dateResult);
 
                 Person parsedLine = new Person()
                 {
                     LastName = items[0] ?? "",
                     FirstName = items[1] ?? "",
                     Gender = personGender,
+                    FavoriteColor = items[3] ?? "",
                     DateOfBirth = dateResult
                 };
                 retVal.Add(parsedLine);

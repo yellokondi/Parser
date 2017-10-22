@@ -8,6 +8,6 @@ namespace ParserSorter.Factory
 {
     public abstract class FileFactory
     {
-        public abstract IFileFactory GetFile(String fileType, String fileLocation);
+        public abstract IFileFactory GetFile(String fileLocation);
     }
 }
