@@ -7,42 +7,18 @@ using System.Threading.Tasks;
 
 namespace ParserSorter.SortHelpers
 {
-    class GenderSortAscendingHelper : IComparer<Person>, IComparer
+    class GenderSortAscendingHelper : IComparer<Person>
     {
-        int IComparer.Compare(Object x, Object y)
+        Int32 IComparer<Person>.Compare(Person x, Person y)
         {
-            Person p1 = (Person)x;
-            Person p2 = (Person)y;
-
-            if (p1.Gender > p2.Gender)
+            Int32 genderDiff = x.Gender.CompareTo(y.Gender);
+            if (genderDiff != 0)
             {
-                return 1;
-            }
-
-            if (p1.Gender < p2.Gender)
-            {
-                return -1;
+                return genderDiff;
             }
             else
             {
-                return 0;
-            }
-        }
-
-        int IComparer<Person>.Compare(Person x, Person y)
-        {
-            if (x.Gender > y.Gender)
-            {
-                return 1;
-            }
-
-            if (x.Gender < y.Gender)
-            {
-                return -1;
-            }
-            else
-            {
-                return 0;
+                return x.LastName.CompareTo(y.LastName);
             }
         }
     }

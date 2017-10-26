@@ -7,14 +7,11 @@ using System.Threading.Tasks;
 
 namespace ParserSorter.SortHelpers
 {
-    class LastNameSortDescendingHelper : IComparer
+    public class LastNameSortDescendingHelper : IComparer<Person>
     {
-        Int32 IComparer.Compare(Object x, Object y)
+        Int32 IComparer<Person>.Compare(Person x, Person y)
         {
-            Person p1 = (Person)x;
-            Person p2 = (Person)y;
-
-            return String.Compare(p2.LastName, p1.LastName);            
+            return String.Compare(y.LastName, x.LastName);
         }
     }
 }

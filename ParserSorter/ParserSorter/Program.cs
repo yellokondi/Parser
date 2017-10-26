@@ -30,14 +30,30 @@ namespace ParserSorter
                 peopleRecords.Sort(new SortHelpers.GenderSortAscendingHelper());
                 foreach(Person person in peopleRecords)
                 {
-                    Console.WriteLine(String.Format("{0}\t\t{1}\t\t{2}\t\t{3}\t\t{4}", person.LastName, person.FirstName, person.Gender, person.FavoriteColor, person.DateOfBirth));
+                    Console.WriteLine(String.Format("{0} {1} {2} {3} {4}", person.Gender, person.LastName, person.FirstName, person.FavoriteColor, person.DateOfBirth.Value.ToString("d")));
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("Output 2 - sorted by birth date, ascending");
+                peopleRecords.Sort(new SortHelpers.DobSortAscendingHelper());
+                foreach (Person person in peopleRecords)
+                {
+                    Console.WriteLine(String.Format("{0} {1} {2} {3} {4}", person.DateOfBirth.Value.ToString("d"), person.LastName, person.FirstName, person.FavoriteColor, person.Gender));
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("Output 2 - sorted by last name, descending");
+                peopleRecords.Sort(new SortHelpers.LastNameSortDescendingHelper());
+                foreach (Person person in peopleRecords)
+                {
+                    Console.WriteLine(String.Format("{0} {1} {2} {3} {4}", person.LastName, person.FirstName, person.FavoriteColor, person.Gender, person.DateOfBirth.Value.ToString("d")));
                 }
             }
             catch(Exception ex)
             {
-
+                Console.WriteLine("Exception: " + ex.Message);
             }
-            Console.ReadKey();
+            Console.Read();
         }
     }
 }

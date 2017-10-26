@@ -52,7 +52,7 @@ namespace ParserSorter
                     FirstName = items[1] ?? "",
                     Gender = personGender,
                     FavoriteColor = items[3] ?? "",
-                    DateOfBirth = dateResult == DateTime.MinValue ? DateTime.MinValue.ToShortDateString() : dateResult.ToShortDateString()
+                    DateOfBirth = dateResult
                 };
                 retVal.Add(parsedLine);
             }

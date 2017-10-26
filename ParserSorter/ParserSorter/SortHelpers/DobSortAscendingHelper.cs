@@ -7,19 +7,22 @@ using System.Threading.Tasks;
 
 namespace ParserSorter.SortHelpers
 {
-    class DobSortAscendingHelper : IComparer,IComparer<Person>
+    public class DobSortAscendingHelper : IComparer<Person>
     {
-        Int32 IComparer.Compare(Object x, Object y)
-        {
-            Person p1 = (Person)x;
-            Person p2 = (Person)y;
-
-            return String.Compare(p1.DateOfBirth, p2.DateOfBirth);
-        }
-
         Int32 IComparer<Person>.Compare(Person x, Person y)
         {
-            return String.Compare(x.DateOfBirth, y.DateOfBirth);
+            if (x.DateOfBirth < y.DateOfBirth)
+            {
+                return -1;
+            }
+            if (y.DateOfBirth < x.DateOfBirth)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }
