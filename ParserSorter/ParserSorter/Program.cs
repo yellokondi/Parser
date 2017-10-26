@@ -42,7 +42,7 @@ namespace ParserSorter
                 }
 
                 Console.WriteLine();
-                Console.WriteLine("Output 2 - sorted by last name, descending");
+                Console.WriteLine("Output 3 - sorted by last name, descending");
                 peopleRecords.Sort(new SortHelpers.LastNameSortDescendingHelper());
                 foreach (Person person in peopleRecords)
                 {
