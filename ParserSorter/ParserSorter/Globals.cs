@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
+using Moq;
 
 namespace ParserSorter
 {
@@ -58,5 +60,34 @@ namespace ParserSorter
             }
             return retVal;
         }
+
+        #region Unit Tests
+        [Fact]
+        public void ParseBy_FileLocationNull_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => ParseBy(',', null));
+        }
+
+        [Fact]
+        public void ParseBy_FileLocationWrong_ThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(() => ParseBy(',', " "));
+            Assert.Throws<ArgumentException>(() => ParseBy(',', ""));
+            Assert.Throws<ArgumentException>(() => ParseBy(',', "|"));
+        }
+
+        [Fact]
+        public void ParseBy_FileLocationWrongFilename_ThrowsArgumentNullException()
+        {
+            Assert.Throws<FileNotFoundException>(() => ParseBy(',', @"C:\MyDir\CommaDelimited.txt"));
+        }
+
+        [Fact]
+        public void ParseBy_FileLocationWrongDirectoryPath_ThrowsArgumentNullException()
+        {
+            Assert.Throws<DirectoryNotFoundException>(() => ParseBy(',', @"Z:\MyDir\CommaDelim.txt"));
+        }
+
+        #endregion
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ParserSorter
 {
-    public class Person : IComparable
+    public class Person : IComparable<Person>
     {
         public String LastName { get; set; }
         public String FirstName { get; set; }
@@ -16,10 +16,9 @@ namespace ParserSorter
         public DateTime? DateOfBirth { get; set; }
 
         #region Default Sort
-        Int32 IComparable.CompareTo(Object obj)
+        Int32 IComparable<Person>.CompareTo(Person other)
         {
-            Person p = (Person)obj;
-            return String.Compare(LastName, p.LastName);
+            return LastName.CompareTo(other.LastName);
         }
         #endregion
     }
