@@ -25,11 +25,19 @@ namespace ParserSorter
                     peopleRecords.AddRange(delimitedFile.Parse());
                 }
 
+                //Write out a header for Output 1:
+                Console.WriteLine("Output 1 – sorted by gender (females before males) then by last name ascending");
+                peopleRecords.Sort(new SortHelpers.GenderSortAscendingHelper());
+                foreach(Person person in peopleRecords)
+                {
+                    Console.WriteLine(String.Format("{0}\t\t{1}\t\t{2}\t\t{3}\t\t{4}", person.LastName, person.FirstName, person.Gender, person.FavoriteColor, person.DateOfBirth));
+                }
             }
             catch(Exception ex)
             {
 
             }
+            Console.ReadKey();
         }
     }
 }
