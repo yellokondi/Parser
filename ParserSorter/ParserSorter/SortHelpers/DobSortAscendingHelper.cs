@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace ParserSorter.SortHelpers
 {
@@ -23,6 +24,33 @@ namespace ParserSorter.SortHelpers
             {
                 return 0;
             }
+        }
+
+       [Fact]
+       public void DobSortAscendingHelper_Compare_SameDate_ReturnsZero()
+        {
+            //arrange:
+            Person actual = new Person() { DateOfBirth = new DateTime(2010, 1, 1) };
+            Person expected = new Person() { DateOfBirth = new DateTime(2010, 1, 1) };
+            Assert.True(actual.DateOfBirth.Value.CompareTo(expected.DateOfBirth.Value) == 0);
+        }
+
+        [Fact]
+        public void DobSortAscendingHelper_Compare_EarlierDate_ReturnsNegativeOne()
+        {
+            //arrange:
+            Person actual = new Person() { DateOfBirth = new DateTime(2009, 1, 1) };
+            Person expected = new Person() { DateOfBirth = new DateTime(2010, 1, 1) };
+            Assert.True(actual.DateOfBirth.Value.CompareTo(expected.DateOfBirth.Value) == -1);
+        }
+
+        [Fact]
+        public void DobSortAscendingHelper_Compare_LaterDate_ReturnsOne()
+        {
+            //arrange:
+            Person actual = new Person() { DateOfBirth = new DateTime(2010, 1, 2) };
+            Person expected = new Person() { DateOfBirth = new DateTime(2010, 1, 1) };
+            Assert.True(actual.DateOfBirth.Value.CompareTo(expected.DateOfBirth.Value) == 1);
         }
     }
 }

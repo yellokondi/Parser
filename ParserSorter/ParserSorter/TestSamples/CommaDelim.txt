@@ -1,0 +1,4 @@
+Chavez,Joshua,Male,Purple,3/13/1985
+Zimmer,Dieter,Male,White,5/5/1973
+Michalska,Krystyna,Female,Red,3/3/1989
+Bo,Han,Female,Silver,4/10/1977

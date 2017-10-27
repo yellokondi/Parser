@@ -1,0 +1,4 @@
+Selez|Rodriguez|Male|Red|12/3/1956
+Macior|Anna|Female|Green|3/22/1978
+Zdunek|Cyprian|Male|Bronze|2/10/1955
+Michalska|Krystyna|Female|Gold|9/10/1978

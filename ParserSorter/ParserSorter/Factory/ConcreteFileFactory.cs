@@ -55,5 +55,9 @@ namespace ParserSorter.Factory
             }
             return retVal;
         }
+
+        #region Unit Tests
+
+        #endregion
     }
 }

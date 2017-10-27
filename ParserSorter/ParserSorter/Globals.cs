@@ -88,6 +88,53 @@ namespace ParserSorter
             Assert.Throws<DirectoryNotFoundException>(() => ParseBy(',', @"Z:\MyDir\CommaDelim.txt"));
         }
 
+        [Fact]
+        public void ParseBy_CommaDelimitedLine_ReturnsPerson()
+        {
+            //arrange:
+            String fileLocation = @"TestSamples\UnitTestCommaDelimited.txt";
+            List<Person> expected = new List<Person>
+            {
+                new Person()
+                {
+                    FirstName = "Joshua",
+                    LastName = "Chavez",
+                    Gender = Gender.Male,
+                    FavoriteColor = "Purple",
+                    DateOfBirth = new DateTime(1985, 3, 13)
+                }
+            };
+
+            //act
+            List<Person> actual = ParseBy(',', fileLocation);
+
+            //assert
+            Assert.Equal<Person>(expected, actual);
+        }
+
+        [Fact]
+        public void ParseBy_CommaDelimitedLineWithNoGender_ReturnsPersonWithGenderSetToOther()
+        {
+            //arrange:
+            String fileLocation = @"TestSamples\UnitTestGenderOther.txt";
+            List<Person> expected = new List<Person>
+            {
+                new Person()
+                {
+                    FirstName = "Joshua",
+                    LastName = "Chavez",
+                    Gender = Gender.Other,
+                    FavoriteColor = "Purple",
+                    DateOfBirth = new DateTime(1985, 3, 13)
+                }
+            };
+
+            //act
+            List<Person> actual = ParseBy(',', fileLocation);
+
+            //assert
+            Assert.Equal<Person>(expected, actual);
+        }
         #endregion
     }
 }
